@@ -1,0 +1,8 @@
+com\lab3\POJO\Manufacture.class
+com\lab3\POJO\Phone.class
+com\lab3\Dao\ManufactureDao.class
+com\lab3\Dao\PhoneDao.class
+com\lab3\App.class
+com\lab3\implement\PhoneDaoImpl.class
+com\lab3\implement\HibernateUtils.class
+com\lab3\implement\ManufactureDaoImpl.class
