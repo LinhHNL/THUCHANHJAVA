@@ -15,14 +15,14 @@
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
             <h3 class="text-center text-secondary mt-5 mb-3">User Login</h3>
-            <form class="border rounded w-100 mb-5 mx-auto px-3 pt-3 bg-light" method="post" >
+            <form class="border rounded w-100 mb-5 mx-auto px-3 pt-3 bg-light" action="Login" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input id="username" type="text" class="form-control"  name="username" placeholder="Username">
+                    <input id="username" name="username" type="text" class="form-control" placeholder="Username">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input id="password" type="password" class="form-control"  name="password" placeholder="Password">
+                    <input id="password"   name="password" type="password" class="form-control" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-success px-5">Login</button>
