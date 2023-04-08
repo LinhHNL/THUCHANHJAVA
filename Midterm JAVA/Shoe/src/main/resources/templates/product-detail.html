@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Shoe</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	<!-- Animate.css -->
+	<link rel="stylesheet" th:href="@{/css/animate.css}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" th:href="@{/css/icomoon.css}" >
+	<link rel="stylesheet" th:href="@{/css/ionicons.css}" >
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" >
+	<link rel="stylesheet" th:href="@{/css/magnific-popup.css}" >
+	<link rel="stylesheet" th:href="@{/css/flexslider.css}" >
+	<link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}" >
+	<link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}" >
+	<link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.css}" >
+	<link rel="stylesheet" th:href="@{/fonts/flaticon/font/flaticon.css}" >
+	<link rel="stylesheet" th:href="@{/css/style.css}" >
+
+
+</head>
+	<body>
+		
+	<div class="colorlib-loader"></div>
+
+	<div id="page">
+		<div th:replace="fragments/header :: header">&copy</div>
+
+
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<p class="bread"><span><a href="">Home</a></span> / <span>Product Details</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row row-pb-lg product-detail-wrap">
+					<div class="col-sm-8">
+						<div >
+							<div class="item">
+								<div class="product-entry border">
+									<a href="#" >
+										<img th:src="${product.getURLImage()}" class="img-fluid" >
+									</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="product-desc">
+							<h3 th:text="${product.getName()}"></h3>
+							<p class="price">
+								Price<span th:text="${product.getPrice()}"></span>
+							</p>
+
+
+							</div>
+							<form action="/cart/add-to-cart" method="post">
+
+<input type="hidden" name="product-id" th:value="${product.getProductId()}">
+								<span>Color</span>
+
+<div class="btn-group">
+
+
+	<div class="form-check float-left" th:each="color:${product.getColors()}">
+		<input class="form-check-input btn-check" type="radio" name="color" th:id="c+${color.getColorId()}" th:value="${color.getColorId()}">
+		<label class="form-check-label btn btn-secondary"  th:for="c+${color.getColorId()}"   th:text="${color.getName()}">
+			Default radio
+		</label>
+	</div>
+
+	<br>
+</div>
+								<br>
+								<span>Size</span>
+								<br>
+<div class="btn-group">
+
+	<div class="form-check float-left" th:each="size:${product.getSizes()}">
+		<input class="form-check-input btn-check" type="radio" name="size" th:id="s+${size.getSizeId()}" th:value="${size.getSizeId()}">
+		<label class="form-check-label btn btn-secondary"  th:for="s+${size.getSizeId()}"   th:text="${size.getName()}">
+
+		</label>
+	</div>
+
+</div>
+
+
+
+								<br>
+								<div class="input-group mb-4">
+                     	<span class="input-group-btn">
+                        	<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
+                           <i class="icon-minus2"></i>
+                        	</button>
+                    		</span>
+									<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+									<span class="input-group-btn ml-1">
+                        	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+                             <i class="icon-plus2"></i>
+                         </button>
+                     	</span>
+								</div>
+								<button  class="icon-shopping-cart btn btn-outline-danger btn-primary"> Add to Cart</button>
+							</form>
+
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-md-12 pills">
+								<div class="bd-example bd-example-tabs">
+								  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+								    <li class="nav-item">
+								      <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Description</a>
+								    </li>
+
+								  </ul>
+
+								  <div class="tab-content" id="pills-tabContent">
+								    <div class="tab-pane border fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab" th:text="${product.getDescription()}">
+
+
+								    </div>
+
+
+
+
+								  </div>
+								</div>
+				         </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</div>
+
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
+	</div>
+
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/jquery.easing.1.3.js}"></script>
+	<script th:src="@{/js/jquery.waypoints.min.js}"></script>
+	<script th:src="@{/js/jquery.flexslider-min.js}"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/js/magnific-popup-options.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.js}"></script>
+	<script th:src="@{/js/jquery.stellar.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+
+	<script>
+		$(document).ready(function(){
+
+		var quantitiy=0;
+		   $('.quantity-right-plus').click(function(e){
+		        
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		            
+		            $('#quantity').val(quantity + 1);
+
+		          
+		            // Increment
+		        
+		    });
+
+		     $('.quantity-left-minus').click(function(e){
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		      
+		            // Increment
+		            if(quantity>0){
+		            $('#quantity').val(quantity - 1);
+		            }
+		    });
+		    
+		});
+	</script>
+
+
+	</body>
+</html>
+
