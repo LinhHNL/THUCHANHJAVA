@@ -22,7 +22,7 @@ public class Order {
     private Long OrderId;
 
     @ManyToOne
-    @JoinColumn(name ="Customer_Id")
+    @JoinColumn(name ="Customer_id")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Customer customer;
